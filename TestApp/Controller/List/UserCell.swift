@@ -24,7 +24,6 @@ class UserCell: UITableViewCell {
     
     var delegate: HighlightButtonDelegate!
     var indexPath: IndexPath!
-    var profileImageX: CGFloat!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -34,13 +33,8 @@ class UserCell: UITableViewCell {
     }
     
     func configureCell(with user: User) {
-        self.profileImageView.transform = CGAffineTransform.identity
-        self.nameLabel.transform = CGAffineTransform.identity
-        self.highlightButton.transform = CGAffineTransform.identity
-        
-        self.nameLabel.center = CGPoint(x: self.nameLabel.center.x, y: self.nameLabel.center.y)
-        
-        profileImageX = self.profileImageView.center.x
+        cellShrink()
+
         if let firstName = user.firstName,
             let lastName = user.lastName {
                 nameLabel.text = "\(firstName.capitalized) \(lastName.capitalized)"
@@ -59,15 +53,23 @@ class UserCell: UITableViewCell {
             self.floatingBackgroundView.layer.shadowRadius = 3.5
             self.floatingBackgroundView.layer.shadowOffset = CGSize(width: 0.0, height: 2.0)
             self.floatingBackgroundView.layer.shadowColor = UIColor(red:0.13, green:0.47, blue:0.81, alpha:1.0).cgColor
-            
-            self.profileImageView.transform = CGAffineTransform(scaleX: 1.25, y: 1.25)
-            self.highlightButton.transform = CGAffineTransform(scaleX: 1.25, y: 1.25)
 
-            let originalTransform = self.nameLabel.transform
-            let scaledTransform = originalTransform.scaledBy(x: 1.25, y: 1.25)
-            let scaledAndTranslatedTransform = scaledTransform.translatedBy(x: 24, y: 0)
+            let originalNameTransform = self.nameLabel.transform
+            let originalImageTransform = self.profileImageView.transform
+            let originalButtonTransform = self.highlightButton.transform
+            
+            let scaledNameTransform = originalNameTransform.scaledBy(x: 1.25, y: 1.25)
+            let scaledImageTransform = originalImageTransform.scaledBy(x: 1.25, y: 1.25)
+            let scaledButtonTransform = originalButtonTransform.scaledBy(x: 1.25, y: 1.25)
+            
+            let scaledAndTranslatedNameTransform = scaledNameTransform.translatedBy(x: 24, y: 0)
+            let scaledAndTranslatedImageTransform = scaledImageTransform.translatedBy(x: 4, y: 0)
+            let scaledAndTranslatedButtonTransform = scaledButtonTransform.translatedBy(x: -4, y: 0)
+            
             UIView.animate(withDuration: 0.5, animations: {
-                self.nameLabel.transform = scaledAndTranslatedTransform
+                self.nameLabel.transform = scaledAndTranslatedNameTransform
+                self.profileImageView.transform = scaledAndTranslatedImageTransform
+                self.highlightButton.transform = scaledAndTranslatedButtonTransform
             })
         }
     }
