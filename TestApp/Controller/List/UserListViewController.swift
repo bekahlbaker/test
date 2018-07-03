@@ -29,7 +29,7 @@ class UserListViewController: UIViewController, UITableViewDelegate, UITableView
     // MARK: NETWORKING
     
     func loadUsers() {
-        APIClient.request(endpoint: UserEndpoints.getUsers(countOf: 25)) { (response) in
+        APIClient.request(endpoint: UserEndpoints.getUsers(countOf: 60)) { (response) in
             if response != nil {
                 self.users = response!
                 self.tableView.reloadData()
@@ -60,10 +60,7 @@ class UserListViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if indexPath.row == selectedRowIndex {
-            return 130 //Expanded
-        }
-        return 100 //Not expanded
+        return 100
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -72,8 +69,8 @@ class UserListViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        // Don't transform previously selected index
-        if indexPath.row != previousSelectedRowIndex {
+        // Don't transform previously selected index or current
+        if indexPath.row != previousSelectedRowIndex && indexPath.row != selectedRowIndex {
             cell.transform = CGAffineTransform(scaleX: 0.8, y: 0.8)
             UIView.animate(withDuration: 0.5) {
                 cell.transform = CGAffineTransform.identity
@@ -86,15 +83,15 @@ class UserListViewController: UIViewController, UITableViewDelegate, UITableView
         // Saves last tapped index for reloading
         previousSelectedRowIndex = selectedRowIndex
         let previousIndex: IndexPath = [0, selectedRowIndex]
-        
+
         // Sets new selected index
         if selectedRowIndex == index.row {
             selectedRowIndex = -1
         } else {
             selectedRowIndex = index.row
         }
-        
-        // Reloads new index and previous
+
+//        // Reloads new index and previous
         self.tableView.reloadRows(at: [index, previousIndex], with: .automatic)
     }
     
