@@ -121,8 +121,8 @@
 				27CE5BB320E92FC300187E78 /* Model */,
 				27CE5BB220E92FBF00187E78 /* View */,
 				27CE5BB120E92FB400187E78 /* Controller */,
-				27CE5BB620E9301C00187E78 /* Supporting Files */,
 				27CE5B9520E92E8600187E78 /* Main.storyboard */,
+				27CE5B9820E92E8600187E78 /* Assets.xcassets */,
 				27CE5B9D20E92E8600187E78 /* Info.plist */,
 				27CE5B9120E92E8600187E78 /* AppDelegate.swift */,
 				27CE5B9A20E92E8600187E78 /* LaunchScreen.storyboard */,
@@ -180,14 +180,6 @@
 				27CE5BBF20E97A9500187E78 /* APIClient.swift */,
 			);
 			path = Networking;
-			sourceTree = "<group>";
-		};
-		27CE5BB620E9301C00187E78 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				27CE5B9820E92E8600187E78 /* Assets.xcassets */,
-			);
-			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
 		27CE5BC720EA620900187E78 /* List */ = {
