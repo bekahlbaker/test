@@ -20,6 +20,7 @@
 		27CE5BC620E9BDA000187E78 /* CircleImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27CE5BC520E9BDA000187E78 /* CircleImageView.swift */; };
 		27CE5BCA20EA622900187E78 /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27CE5BC920EA622900187E78 /* UserCell.swift */; };
 		27CE5C0220EACE9D00187E78 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27CE5C0120EACE9D00187E78 /* DetailViewController.swift */; };
+		27CE5C0420EBB16000187E78 /* UnderlinedLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27CE5C0320EBB16000187E78 /* UnderlinedLabel.swift */; };
 		55DFDAC443B41A9D3CA8813E /* Pods_TestAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 818454C18FA6B978557BA0FB /* Pods_TestAppTests.framework */; };
 		970B97B53BFE5F50B2907604 /* Pods_TestApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA225C60127A6DCF5F5032DD /* Pods_TestApp.framework */; };
 /* End PBXBuildFile section */
@@ -53,6 +54,7 @@
 		27CE5BC520E9BDA000187E78 /* CircleImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleImageView.swift; sourceTree = "<group>"; };
 		27CE5BC920EA622900187E78 /* UserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
 		27CE5C0120EACE9D00187E78 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		27CE5C0320EBB16000187E78 /* UnderlinedLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnderlinedLabel.swift; sourceTree = "<group>"; };
 		56A7FCCFE40B60915126F175 /* Pods-TestApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TestApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TestApp/Pods-TestApp.debug.xcconfig"; sourceTree = "<group>"; };
 		684E83D65B23A3273710E14A /* Pods-TestAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TestAppTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TestAppTests/Pods-TestAppTests.release.xcconfig"; sourceTree = "<group>"; };
 		818454C18FA6B978557BA0FB /* Pods_TestAppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TestAppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -150,6 +152,7 @@
 			isa = PBXGroup;
 			children = (
 				27CE5BC520E9BDA000187E78 /* CircleImageView.swift */,
+				27CE5C0320EBB16000187E78 /* UnderlinedLabel.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -380,6 +383,7 @@
 				27CE5BCA20EA622900187E78 /* UserCell.swift in Sources */,
 				27CE5B9220E92E8600187E78 /* AppDelegate.swift in Sources */,
 				27CE5BBE20E972AF00187E78 /* UserEndpoints.swift in Sources */,
+				27CE5C0420EBB16000187E78 /* UnderlinedLabel.swift in Sources */,
 				27CE5BBC20E9716500187E78 /* APIEndpoint.swift in Sources */,
 				27CE5BC220E97B3C00187E78 /* User.swift in Sources */,
 				27CE5BC020E97A9500187E78 /* APIClient.swift in Sources */,
