@@ -35,4 +35,21 @@ class APIClient {
             completion(users)
         }
     }
+    
+    static func downloadImage(with url: String, completion:@escaping (UIImage?) -> Void) {
+        Alamofire.request(url).responseData { (response) in
+            guard response.result.isSuccess else {
+                completion(nil)
+                return
+            }
+            
+            guard let data = response.data,
+                let image = UIImage(data: data) else {
+                completion(nil)
+                return
+            }
+
+            completion(image)
+        }
+    }
 }

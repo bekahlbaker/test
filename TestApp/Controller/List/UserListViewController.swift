@@ -15,6 +15,7 @@ class UserListViewController: UIViewController, UITableViewDelegate, UITableView
     var users = [User]()
     var previousSelectedRowIndex = -1
     var selectedRowIndex = -1
+    var selectedUser: User!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,7 +23,12 @@ class UserListViewController: UIViewController, UITableViewDelegate, UITableView
         tableView.delegate = self
         tableView.dataSource = self
         
-        
+        loadUsers()
+    }
+    
+    // MARK: NETWORKING
+    
+    func loadUsers() {
         APIClient.request(endpoint: UserEndpoints.getUsers(countOf: 25)) { (response) in
             if response != nil {
                 self.users = response!
@@ -31,10 +37,6 @@ class UserListViewController: UIViewController, UITableViewDelegate, UITableView
                 print("ERROR MAKING REQUEST FOR USERS")
             }
         }
-        
-        // TODO: Setup tableview, populate with user list
-        
-        // Setup user detail view, send user through
     }
     
     // MARK: TableView
@@ -65,9 +67,8 @@ class UserListViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let cell = tableView.cellForRow(at: indexPath) as! UserCell
-        print("SELECTED CELL ", cell.nameLabel.text)
-        
+        selectedUser = users[indexPath.row]
+        performSegue(withIdentifier: "toDetail", sender: nil)
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
@@ -95,5 +96,13 @@ class UserListViewController: UIViewController, UITableViewDelegate, UITableView
         
         // Reloads new index and previous
         self.tableView.reloadRows(at: [index, previousIndex], with: .automatic)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toDetail" {
+            if let vc = segue.destination as? DetailViewController {
+                vc.passedUser = selectedUser
+            }
+        }
     }
 }
