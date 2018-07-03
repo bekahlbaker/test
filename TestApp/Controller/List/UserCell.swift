@@ -35,15 +35,26 @@ class UserCell: UITableViewCell {
     func configureCell(with user: User) {
         cellShrink()
 
-        if let firstName = user.firstName,
-            let lastName = user.lastName {
-                nameLabel.text = "\(firstName.capitalized) \(lastName.capitalized)"
-        }
+        guard let firstName = user.firstName,
+            let lastName = user.lastName  else { return }
+        
+        nameLabel.text = "\(firstName.capitalized) \(lastName.capitalized)"
         
         switch isSelected {
         case true: cellGrow()
         case false: cellShrink()
         }
+        
+        guard let profileUrl = user.imageMed else { return }
+        
+        APIClient.downloadImage(with: profileUrl ) { (response) in
+            if response != nil {
+                self.profileImageView.image = response!
+            } else {
+                print("ERROR MAKING REQUEST FOR Image")
+            }
+        }
+        // Could cache images with NSCache or Kingfisher if there was more data being fetched
     }
     
     func cellGrow() {
@@ -81,12 +92,13 @@ class UserCell: UITableViewCell {
             self.floatingBackgroundView.layer.shadowRadius = 0
             self.floatingBackgroundView.layer.shadowOffset = CGSize(width: 0.0, height: 0.0)
             self.floatingBackgroundView.layer.shadowColor = UIColor.clear.cgColor
-            self.profileImageView.transform = CGAffineTransform.identity
-            self.nameLabel.transform = CGAffineTransform.identity
-            self.highlightButton.transform = CGAffineTransform.identity
+            
+            UIView.animate(withDuration: 0.5, animations: {
+                self.profileImageView.transform = CGAffineTransform.identity
+                self.nameLabel.transform = CGAffineTransform.identity
+                self.highlightButton.transform = CGAffineTransform.identity
+            })
         }
     }
-    
-    
-    // TODO: Cache images / fetch from cache first
+    // TODO: shrink is not always animated
 }
