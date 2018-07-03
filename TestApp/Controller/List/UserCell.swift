@@ -40,11 +40,6 @@ class UserCell: UITableViewCell {
         
         nameLabel.text = "\(firstName.capitalized) \(lastName.capitalized)"
         
-        switch isSelected {
-        case true: cellGrow()
-        case false: cellShrink()
-        }
-        
         guard let profileUrl = user.imageMed else { return }
         
         APIClient.downloadImage(with: profileUrl ) { (response) in
@@ -55,16 +50,21 @@ class UserCell: UITableViewCell {
             }
         }
         // Could cache images with NSCache or Kingfisher if there was more data being fetched
+        
+        switch isSelected {
+        case true: cellGrow()
+        case false: cellShrink()
+        }
     }
     
     func cellGrow() {
-        UIView.animate(withDuration: 0.5) {
+        UIView.animate(withDuration: 0.5, animations: {
             self.floatingBackgroundView.layer.cornerRadius = 10
             self.floatingBackgroundView.layer.shadowOpacity = 0.3
             self.floatingBackgroundView.layer.shadowRadius = 3.5
             self.floatingBackgroundView.layer.shadowOffset = CGSize(width: 0.0, height: 2.0)
             self.floatingBackgroundView.layer.shadowColor = UIColor(red:0.13, green:0.47, blue:0.81, alpha:1.0).cgColor
-
+                
             let originalNameTransform = self.nameLabel.transform
             let originalImageTransform = self.profileImageView.transform
             let originalButtonTransform = self.highlightButton.transform
@@ -77,28 +77,29 @@ class UserCell: UITableViewCell {
             let scaledAndTranslatedImageTransform = scaledImageTransform.translatedBy(x: 4, y: 0)
             let scaledAndTranslatedButtonTransform = scaledButtonTransform.translatedBy(x: -4, y: 0)
             
-            UIView.animate(withDuration: 0.5, animations: {
+            UIView.animate(withDuration: 0.8, animations: {
                 self.nameLabel.transform = scaledAndTranslatedNameTransform
                 self.profileImageView.transform = scaledAndTranslatedImageTransform
                 self.highlightButton.transform = scaledAndTranslatedButtonTransform
             })
-        }
+
+        })
     }
     
     func cellShrink() {
-        UIView.animate(withDuration: 0.5) {
+        UIView.animate(withDuration: 0.5, animations: {
             self.floatingBackgroundView.layer.cornerRadius = 3
             self.floatingBackgroundView.layer.shadowOpacity = 0
             self.floatingBackgroundView.layer.shadowRadius = 0
             self.floatingBackgroundView.layer.shadowOffset = CGSize(width: 0.0, height: 0.0)
             self.floatingBackgroundView.layer.shadowColor = UIColor.clear.cgColor
             
-            UIView.animate(withDuration: 0.5, animations: {
-                self.profileImageView.transform = CGAffineTransform.identity
-                self.nameLabel.transform = CGAffineTransform.identity
-                self.highlightButton.transform = CGAffineTransform.identity
-            })
-        }
+                UIView.animate(withDuration: 0.8, animations: {
+                    self.profileImageView.transform = CGAffineTransform.identity
+                    self.nameLabel.transform = CGAffineTransform.identity
+                    self.highlightButton.transform = CGAffineTransform.identity
+                })
+        })
     }
     // TODO: shrink is not always animated
 }
