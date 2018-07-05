@@ -117,7 +117,6 @@
 			isa = PBXGroup;
 			children = (
 				27CE5BB520E92FEE00187E78 /* Networking */,
-				27CE5BB420E92FC800187E78 /* Utils */,
 				27CE5BB320E92FC300187E78 /* Model */,
 				27CE5BB220E92FBF00187E78 /* View */,
 				27CE5BB120E92FB400187E78 /* Controller */,
@@ -151,6 +150,7 @@
 		27CE5BB220E92FBF00187E78 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				27CE5BC920EA622900187E78 /* UserCell.swift */,
 				27CE5BC520E9BDA000187E78 /* CircleImageView.swift */,
 				27CE5C0320EBB16000187E78 /* UnderlinedLabel.swift */,
 			);
@@ -163,13 +163,6 @@
 				27CE5BC120E97B3C00187E78 /* User.swift */,
 			);
 			path = Model;
-			sourceTree = "<group>";
-		};
-		27CE5BB420E92FC800187E78 /* Utils */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Utils;
 			sourceTree = "<group>";
 		};
 		27CE5BB520E92FEE00187E78 /* Networking */ = {
@@ -186,7 +179,6 @@
 			isa = PBXGroup;
 			children = (
 				27CE5BC320E9845700187E78 /* UserListViewController.swift */,
-				27CE5BC920EA622900187E78 /* UserCell.swift */,
 			);
 			path = List;
 			sourceTree = "<group>";
