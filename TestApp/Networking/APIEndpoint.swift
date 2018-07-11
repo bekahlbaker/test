@@ -16,6 +16,11 @@ protocol APIEndpoint {
 }
 
 extension APIEndpoint {
+    
+    var baseURL: String {
+        return "https://randomuser.me/api/"
+    }
+    
     var fullURL: String {
         return baseURL + path
     }
@@ -27,10 +32,7 @@ enum UsersEndpoints {
 }
 
 extension UsersEndpoints: APIEndpoint {
-    var baseURL: String {
-        return "https://randomuser.me/api/"
-    }
-    
+
     var path: String {
         switch self {
         case .getUsers(let countOf):
