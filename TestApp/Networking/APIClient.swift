@@ -10,29 +10,25 @@ import Foundation
 import Alamofire
 
 class APIClient {
-    // TODO: Handle error
-    // Currently only set to return User type, could set to return any type specified
-    static func request(endpoint: APIEndpoint, completion:@escaping ([User]?)->Void) {
-        guard let url = URL(string: endpoint.fullURL) else {
-            completion(nil)
-            return
-        }
+
+    static func request(endpoint: APIEndpoint, completion:@escaping ([[String: Any]]?, Error?) -> Void) {
+        guard let url = URL(string: endpoint.fullURL) else { return }
+        
         Alamofire.request(url).responseJSON { response in
             guard response.result.isSuccess else {
-                    completion(nil)
-                return
-            }
-            
-            // init users with JSON
-            guard let value = response.result.value as? [String: Any],
-            let results = value["results"] as? [[String: Any]] else {
-                print("Malformed data received from request")
-                completion(nil)
+                    let error = response.result.error
+                    completion(nil, error)
                 return
             }
 
-            let users = results.compactMap{ json in return User(json: json) }
-            completion(users)
+            guard let value = response.result.value as? [String: Any],
+            let results = value["results"] as? [[String: Any]] else {
+                print("Malformed data received from request")
+                completion(nil, response.result.error)
+                return
+            }
+
+            completion(results, nil)
         }
     }
     

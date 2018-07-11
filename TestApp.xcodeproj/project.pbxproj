@@ -13,7 +13,6 @@
 		27CE5B9C20E92E8600187E78 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 27CE5B9A20E92E8600187E78 /* LaunchScreen.storyboard */; };
 		27CE5BA720E92E8600187E78 /* TestAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27CE5BA620E92E8600187E78 /* TestAppTests.swift */; };
 		27CE5BBC20E9716500187E78 /* APIEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27CE5BBB20E9716500187E78 /* APIEndpoint.swift */; };
-		27CE5BBE20E972AF00187E78 /* UserEndpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27CE5BBD20E972AF00187E78 /* UserEndpoints.swift */; };
 		27CE5BC020E97A9500187E78 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27CE5BBF20E97A9500187E78 /* APIClient.swift */; };
 		27CE5BC220E97B3C00187E78 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27CE5BC120E97B3C00187E78 /* User.swift */; };
 		27CE5BC420E9845700187E78 /* UserListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27CE5BC320E9845700187E78 /* UserListViewController.swift */; };
@@ -47,7 +46,6 @@
 		27CE5BA620E92E8600187E78 /* TestAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestAppTests.swift; sourceTree = "<group>"; };
 		27CE5BA820E92E8600187E78 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		27CE5BBB20E9716500187E78 /* APIEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIEndpoint.swift; sourceTree = "<group>"; };
-		27CE5BBD20E972AF00187E78 /* UserEndpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserEndpoints.swift; sourceTree = "<group>"; };
 		27CE5BBF20E97A9500187E78 /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
 		27CE5BC120E97B3C00187E78 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		27CE5BC320E9845700187E78 /* UserListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListViewController.swift; sourceTree = "<group>"; };
@@ -169,7 +167,6 @@
 			isa = PBXGroup;
 			children = (
 				27CE5BBB20E9716500187E78 /* APIEndpoint.swift */,
-				27CE5BBD20E972AF00187E78 /* UserEndpoints.swift */,
 				27CE5BBF20E97A9500187E78 /* APIClient.swift */,
 			);
 			path = Networking;
@@ -366,7 +363,6 @@
 				27CE5C0220EACE9D00187E78 /* DetailViewController.swift in Sources */,
 				27CE5BCA20EA622900187E78 /* UserCell.swift in Sources */,
 				27CE5B9220E92E8600187E78 /* AppDelegate.swift in Sources */,
-				27CE5BBE20E972AF00187E78 /* UserEndpoints.swift in Sources */,
 				27CE5C0420EBB16000187E78 /* UnderlinedLabel.swift in Sources */,
 				27CE5BBC20E9716500187E78 /* APIEndpoint.swift in Sources */,
 				27CE5BC220E97B3C00187E78 /* User.swift in Sources */,

@@ -29,12 +29,16 @@ class UserListViewController: UIViewController, UITableViewDelegate, UITableView
     // MARK: NETWORKING
     
     func loadUsers() {
-        APIClient.request(endpoint: UserEndpoints.getUsers(countOf: 60)) { (response) in
+        APIClient.request(endpoint: UsersEndpoints.getUsers(countOf: 60)) { (response, error) in
             if response != nil {
-                self.users = response!
+                let users = response?.compactMap{ json in return User(json: json) }
+                self.users = users ?? []
                 self.tableView.reloadData()
             } else {
-                print("ERROR MAKING REQUEST FOR USERS")
+                print("ERROR MAKING REQUEST FOR USERS", error ?? "")
+                self.users = []
+                self.tableView.reloadData()
+                // Add UI for empty list
             }
         }
     }

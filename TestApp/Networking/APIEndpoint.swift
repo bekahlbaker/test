@@ -20,3 +20,21 @@ extension APIEndpoint {
         return baseURL + path
     }
 }
+
+enum UsersEndpoints {
+    case getUsers(countOf: Int)
+    // Could add additional user endpoints (login, get specific user, etc)
+}
+
+extension UsersEndpoints: APIEndpoint {
+    var baseURL: String {
+        return "https://randomuser.me/api/"
+    }
+    
+    var path: String {
+        switch self {
+        case .getUsers(let countOf):
+            return "?results=\(countOf)"
+        }
+    }
+}
