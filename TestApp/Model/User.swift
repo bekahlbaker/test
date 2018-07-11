@@ -39,3 +39,26 @@ struct User: JSONDecodable {
     // Using Gloss to handle parsing json to user model
     // Without Gloss set up, initialize user with dictionary values OR Swift's Decodable
 }
+
+
+//struct Result: Codable {
+//    var results: [User]
+//}
+//
+//struct User: Codable {
+//    var name: Name
+//
+//    func encode() -> Data? {
+//        let encodedUser = try? JSONEncoder().encode(self)
+//        return encodedUser
+//    }
+//}
+//
+//struct Name: Codable {
+//    var first: String
+//    var last: String
+//}
+
+//guard let results = try? JSONDecoder().decode(Result.self, from: data) else { return }
+//
+//print(results)
